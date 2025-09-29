@@ -1,6 +1,6 @@
 # Performance Report – Sales and KPIs in the Gardening Market
 
-![Plant Company Performance Report.png](Plant_Company_Performance_Report.png)
+![Plant Company Performance Report.png](resources/Plant_Company_Performance_Report.png)
 
 # Context
 
