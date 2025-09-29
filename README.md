@@ -177,11 +177,11 @@ The treemap is useful to show **hierarchy and negative magnitude in a compact sp
 ![image.png](resources/78fd473e-96b1-4bfb-8bfb-906fe62b4bab.png)
 
 <aside>
-💡 **Objective:** Show **how each month contributed** to the increase or decrease in the YTD compared to the PYTD.
+*Objective:* Show *how each month contributed* to the increase or decrease in the YTD compared to the PYTD.
 
 </aside>
 
-The waterfall chart is ideal to visualize **increments and reductions over time**, helping understand **monthly dynamics**.
+The waterfall chart is ideal to visualize *increments and reductions over time*, helping understand *monthly dynamics*.
 
 ---
 
@@ -192,11 +192,11 @@ The waterfall chart is ideal to visualize **increments and reductions over time*
 ![image.png](resources/d4e6db45-70b2-4c09-ba88-ff938994cc27.png)
 
 <aside>
-💡 **Objective:** Compare the **cumulative monthly volume** with the previous year’s performance.
+*Objective:* Compare the *cumulative monthly volume* with the previous year’s performance.
 
 </aside>
 
-The columns visualize the **YTD by month**, while the line adds a **historical reference (PYTD)**, facilitating temporal comparison.
+The columns visualize the *YTD by month*, while the line adds a *historical reference (PYTD)*, facilitating temporal comparison.
 
 ---
 
@@ -207,11 +207,11 @@ The columns visualize the **YTD by month**, while the line adds a **historical r
 ![image.png](resources/image%206.png)
 
 <aside>
-💡 **Objective:** Analyze the **relationship between sales volume and gross margin** for each customer/account.
+*Objective:* Analyze the *relationship between sales volume and gross margin* for each customer/account.
 
 </aside>
 
-The scatter plot reveals **patterns and clusters**, identifying **high-volume accounts with low margins**, and highlighting **opportunities and risks**.
+The scatter plot reveals *patterns and clusters*, identifying *high-volume accounts with low margins*, and highlighting *opportunities and risks*.
 
 ---
 
@@ -229,7 +229,7 @@ The dashboard consolidated **sales information into a single panel**, enabling t
 This allowed identifying **important patterns**, such as **seasonal fluctuations, performance variations across countries, and high-volume customers with reduced margins**.
 
 <aside>
-💡 By combining different types of visualizations, the report provides both **immediate executive-level insights** and **detailed data exploration**, turning isolated metrics into a **clear, strategic business view**.
+By combining different types of visualizations, the report provides both **immediate executive-level insights** and **detailed data exploration**, turning isolated metrics into a **clear, strategic business view**.
 
 </aside>
 
