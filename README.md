@@ -200,7 +200,7 @@ The columns visualize the **YTD by month**, while the line adds a **historical r
 
 ---
 
-## Scatter Plot (Dispersão)
+## Scatter Plot
 
 > (YTD Value vs GP% by Account)
 
