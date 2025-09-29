@@ -147,11 +147,11 @@ After modeling, I created a **Power BI dashboard** focused on **executive clarit
 ![image.png](resources/image%205.png)
 
 <aside>
-💡 **Objective:** Display the key KPIs – year-to-date performance (YTD), comparison with the previous year (PYTD), variation, and gross margin (GP%).
+Objective: Display the key KPIs – year-to-date performance (YTD), comparison with the previous year (PYTD), variation, and gross margin (GP%).
 
 </aside>
 
-Helps users gain a **clear and quick overview** of the general situation before diving into details.
+Helps users gain a *clear and quick overview* of the general situation before diving into details.
 
 ---
 
@@ -162,11 +162,11 @@ Helps users gain a **clear and quick overview** of the general situation before 
 ![image.png](resources/f0209e0b-c1ef-4e60-8e98-b088ecbfbc76.png)
 
 <aside>
-💡 **Objective:** Highlight the **countries with the worst relative performance** compared to the previous year.
+Objective: Highlight the countries with the worst relative performance compared to the previous year.
 
 </aside>
 
-The treemap is useful to show **hierarchy and negative magnitude in a compact space**, enabling easy identification of where the biggest problems lie.
+The treemap is useful to show hierarchy and negative magnitude in a compact space, enabling easy identification of where the biggest problems lie.
 
 ---
 
@@ -177,11 +177,11 @@ The treemap is useful to show **hierarchy and negative magnitude in a compact sp
 ![image.png](resources/78fd473e-96b1-4bfb-8bfb-906fe62b4bab.png)
 
 <aside>
-*Objective:* Show *how each month contributed* to the increase or decrease in the YTD compared to the PYTD.
+Objective: Show how each month contributed to the increase or decrease in the YTD compared to the PYTD.
 
 </aside>
 
-The waterfall chart is ideal to visualize *increments and reductions over time*, helping understand *monthly dynamics*.
+The waterfall chart is ideal to visualize increments and reductions over time, helping understand monthly dynamics.
 
 ---
 
@@ -192,11 +192,11 @@ The waterfall chart is ideal to visualize *increments and reductions over time*,
 ![image.png](resources/d4e6db45-70b2-4c09-ba88-ff938994cc27.png)
 
 <aside>
-*Objective:* Compare the *cumulative monthly volume* with the previous year’s performance.
+Objective: Compare the cumulative monthly volume with the previous year’s performance.
 
 </aside>
 
-The columns visualize the *YTD by month*, while the line adds a *historical reference (PYTD)*, facilitating temporal comparison.
+The columns visualize the YTD by month, while the line adds a historical reference (PYTD), facilitating temporal comparison.
 
 ---
 
@@ -207,11 +207,11 @@ The columns visualize the *YTD by month*, while the line adds a *historical refe
 ![image.png](resources/image%206.png)
 
 <aside>
-*Objective:* Analyze the *relationship between sales volume and gross margin* for each customer/account.
+Objective: Analyze the relationship between sales volume and gross margin for each customer/account.
 
 </aside>
 
-The scatter plot reveals *patterns and clusters*, identifying *high-volume accounts with low margins*, and highlighting *opportunities and risks*.
+The scatter plot reveals patterns and clusters, identifying high-volume accounts with low margins, and highlighting opportunities and risks.
 
 ---
 
