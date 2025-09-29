@@ -1,75 +1,74 @@
-# Relatório de Desempenho - Vendas e KPIs no Mercado de Jardinagem
+# Performance Report – Sales and KPIs in the Gardening Market
 
 ![Plant Company Performance Report.png](Plant_Company_Performance_Report.png)
 
-# Contexto
+# Context
 
-Este projeto simula a análise de desempenho de uma empresa fictícia de plantas e jardinagem entre 2022 e 2024.
+This project simulates the performance analysis of a **fictional plant and gardening company** between 2022 and 2024.
 
-O objetivo foi estruturar os dados em modelo dimensional (tabelas fato e dimensão), criar medidas em DAX no Power BI (Sales, Quantity, COGS, Gross Profit, YTD e PYTD) e desenvolver um dashboard interativo que transforme esses cálculos em **insights acionáveis** para a gestão.
-
----
-
-# Objetivo
-
-Fornecer uma visão clara dos principais KPIs de vendas e rentabilidade, permitindo que diretores:
-
-- Acompanhem o desempenho anual (YTD);
-- Comparem resultados com o ano anterior (PYTD);
-- Identifiquem padrões e variações relevantes por país, mês e cliente.
-
-Além da aplicação de conceitos de **Business Intelligence**, este projeto também serve como **demonstração prática de minhas habilidades em modelagem DAX, storytelling com dados e design de dashboards executivos**.
+The goal was to structure the data in a **dimensional model** (fact and dimension tables), create **DAX measures in Power BI** (Sales, Quantity, COGS, Gross Profit, YTD, and PYTD), and develop an **interactive dashboard** that transforms these calculations into **actionable insights** for management.
 
 ---
 
-# Fonte de Dados
+# Objective
 
-> **Período:** 2022 a 2024
-> 
-> 
-> **Entidade de análise:** contas/clientes vinculados a produtos (via `Account_id`)
-> 
-> **Tabelas utilizadas:**
-> 
-> - **`Fact Table` (Sales/Invoice):** transações de vendas (produto, preço, data, identificador).
-> - **`Account Table` (Unique Accounts):** dados dos clientes (identificação e localização).
-> - **`Plant Table` (Product Data):** catálogo de produtos (família, grupo, tamanho, tipo: indoor/outdoor).
+Provide a **clear view of the main KPIs for sales and profitability**, enabling directors to:
 
-**Principais atributos das tabelas:**
+- Track **year-to-date performance (YTD)**;
+- Compare results with the **previous year (PYTD)**;
+- Identify **patterns and relevant variations** by country, month, and customer.
 
-- `Product_id` Identificador único do produto
-- `Sales_USD` Valor de venda
-- `quantity` Quantidade vendida
-- `Price_USD` Preço unitário
-- `COGS_USD` Custo dos produtos vendidos
-- `Date_Time` Data da transação
-- `Account_id` Identificador do cliente
+In addition to applying **Business Intelligence concepts**, this project also serves as a **practical demonstration of my skills in DAX modeling, data storytelling, and executive dashboard design**.
+
+---
+
+# Data Source
+
+> **Period:** 2022 to 2024  
+> 
+> **Entity of analysis:** accounts/customers linked to products (via `Account_id`)  
+> 
+> **Tables used:**  
+> 
+> - **`Fact Table` (Sales/Invoice):** sales transactions (product, price, date, identifier).  
+> - **`Account Table` (Unique Accounts):** customer data (identification and location).  
+> - **`Plant Table` (Product Data):** product catalog (family, group, size, type: indoor/outdoor).  
+
+**Key attributes of the tables:**
+
+- `Product_id` Unique product identifier  
+- `Sales_USD` Sales value  
+- `quantity` Quantity sold  
+- `Price_USD` Unit price  
+- `COGS_USD` Cost of goods sold  
+- `Date_Time` Transaction date  
+- `Account_id` Customer identifier  
 
 <aside>
 💡
 
-### **Variáveis derivadas criadas para análise:**
+### **Derived variables created for analysis:**
 
 </aside>
 
-- Vendas (`Sales`)
-- Quantidade (`Quantity`)
-- `Gross Profit` (Lucro Bruto)
-- `COGs` (Cost of Goods Sold / Custo dos Produtos Vendidos)
-- `PYTD` (Prior Year to Date/Acumulado do mesmo período do ano passado)
-    - Sales
-    - Quantity
-    - Gross Profit
-- `YTD` (Year to Date/Acumulado do Ano)
-    - Sales
-    - Quantity
-    - Gross Profit
+- `Sales`  
+- `Quantity`  
+- `Gross Profit`  
+- `COGS` (Cost of Goods Sold)  
+- `PYTD` (Prior Year-to-Date)  
+  - Sales  
+  - Quantity  
+  - Gross Profit  
+- `YTD` (Year-to-Date)  
+  - Sales  
+  - Quantity  
+  - Gross Profit  
 
 ---
 
-# Modeling em DAX
+# Modeling in DAX
 
-### Indicadores básicos
+### Basic Indicators
 
 ```jsx
 Sales = SUM(Fact_sales[Sales_USD])
@@ -78,54 +77,54 @@ COGS = SUM(Fact_sales[COGS_USD])
 Gross Profit = [Sales] - [COGS]
 ```
 
-### Tabela de datas
+### Date Table
 
 ```jsx
 Dim_Date = 
 CALENDAR (
-    DATE ( 2022, 1, 1 ),
-    DATE ( 2024, 12, 31 )
+    DATE (2022, 1, 1),
+    DATE (2024, 12, 31)
 )
 
 Inpast = 
 VAR lastsalesdate = MAX(Fact_Sales[Date_Time])
-VAR lastsalesdatePY = EDATE(lastsalesdate,-12)
+VAR lastsalesdatePY = EDATE(lastsalesdate, -12)
 RETURN
-Dim_Date[Date]<= lastsalesdatePY
+Dim_Date[Date] <= lastsalesdatePY
 ```
 
 ![image.png](image.png)
 
-### Medidas comparativas (YTD e PYTD)
+### Comparative Measures (YTD and PYTD)
 
-Essas medidas permitem comparar o desempenho atual com o mesmo período do ano anterior.
+These measures allow comparing current performance with the same period of the previous year.
 
 ```jsx
 PYTD_Sales =
-CALCULATE (
-[Sales],
-SAMEPERIODLASTYEAR ( Dim_Date[Date] ),
-Dim_Date[Inpast] = TRUE()
+CALCULATE(
+    [Sales],
+    SAMEPERIODLASTYEAR(Dim_Date[Date]),
+    Dim_Date[Inpast] = TRUE()
 )
 
 PYTD_Quantity = 
-CALCULATE (
+CALCULATE(
     [Quantity],
-    SAMEPERIODLASTYEAR ( Dim_Date[Date] ),
+    SAMEPERIODLASTYEAR(Dim_Date[Date]),
     Dim_Date[Inpast] = TRUE()
 )
 
 PYTD_Gross Profit = 
-CALCULATE (
+CALCULATE(
     [Gross Profit],
-    SAMEPERIODLASTYEAR ( Dim_Date[Date] ),
+    SAMEPERIODLASTYEAR(Dim_Date[Date]),
     Dim_Date[Inpast] = TRUE()
 )
 ```
 
 ![image.png](image%201.png)
 
-Desenvolvi tabelas auxiliares com valores essenciais para filtros, garantindo slicers mais limpos e intuitivos e demonstrando boas práticas de modelagem no Power BI.
+I developed **auxiliary tables** with essential values for filters, ensuring cleaner and more intuitive slicers and demonstrating **best practices in Power BI modeling**.
 
 ![image.png](image%202.png)
 
@@ -135,101 +134,88 @@ Desenvolvi tabelas auxiliares com valores essenciais para filtros, garantindo sl
 
 # Dashboard
 
-Após a modelagem, foi criado um dashboard no Power BI, com foco em clareza executiva e navegação intuitiva.
+After modeling, I created a **Power BI dashboard** focused on **executive clarity and intuitive navigation**.
 
 ![image.png](image%204.png)
 
 ---
 
-## Resumo Executivo Imediato (Cards Superiores)
+## Immediate Executive Summary (Top Cards)
 
-> (YTD, Variação YTD vs PYTD, PYTD e GP%)
-> 
+> (YTD, YTD vs PYTD Variation, PYTD, and GP%)
 
 ![image.png](image%205.png)
 
 <aside>
-💡 **Objetivo:** mostrar os principais KPIs: desempenho acumulado no ano (YTD), comparação com o ano anterior (PYTD), variação e margem bruta (GP%).
+💡 **Objective:** Display the key KPIs – year-to-date performance (YTD), comparison with the previous year (PYTD), variation, and gross margin (GP%).
 
 </aside>
 
-Ajudam o usuário a ter uma visão clara e rápida do estado geral antes de mergulhar nos detalhes
+Helps users gain a **clear and quick overview** of the general situation before diving into details.
 
 ---
 
 ## Treemap
 
-> (Bottom 10 YTD vs PYTD por País)
-> 
+> (Bottom 10 YTD vs PYTD by Country)
 
 ![image.png](f0209e0b-c1ef-4e60-8e98-b088ecbfbc76.png)
 
 <aside>
-💡
-
-**Objetivo:** destacar os países com **piores desempenhos relativos** em relação ao ano anterior.
+💡 **Objective:** Highlight the **countries with the worst relative performance** compared to the previous year.
 
 </aside>
 
-O treemap é útil para mostrar hierarquia e magnitude negativa em espaço compacto, permitindo identificar facilmente onde estão os maiores problemas.
+The treemap is useful to show **hierarchy and negative magnitude in a compact space**, enabling easy identification of where the biggest problems lie.
 
 ---
 
 ## Waterfall Chart
 
-> (YTD vs PYTD por Mês)
-> 
+> (YTD vs PYTD by Month)
 
 ![image.png](78fd473e-96b1-4bfb-8bfb-906fe62b4bab.png)
 
 <aside>
-💡
-
-**Objetivo:** mostrar **como cada mês contribuiu** para o aumento ou diminuição no acumulado YTD em comparação ao PYTD.
+💡 **Objective:** Show **how each month contributed** to the increase or decrease in the YTD compared to the PYTD.
 
 </aside>
 
-O gráfico waterfall é ideal para visualizar incrementos e reduções ao longo do tempo e entender a dinâmica mensal.
+The waterfall chart is ideal to visualize **increments and reductions over time**, helping understand **monthly dynamics**.
 
 ---
 
-## Colunas com Linha
+## Columns with Line
 
-> (Value YTD por Mês + Linha Value PYTD)
-> 
+> (YTD Value by Month + Line for PYTD Value)
 
 ![image.png](d4e6db45-70b2-4c09-ba88-ff938994cc27.png)
 
 <aside>
-💡
-
-**Objetivo:** comparar o **volume acumulado mês a mês** com o desempenho do ano anterior.
+💡 **Objective:** Compare the **cumulative monthly volume** with the previous year’s performance.
 
 </aside>
 
-As colunas permitem visualizar o YTD por mês, enquanto a linha adiciona a referência histórica (PYTD), facilitando a comparação temporal.
+The columns visualize the **YTD by month**, while the line adds a **historical reference (PYTD)**, facilitating temporal comparison.
 
 ---
 
 ## Scatter Plot (Dispersão)
 
-> (Value YTD vs GP% por Conta)
-> 
+> (YTD Value vs GP% by Account)
 
 ![image.png](image%206.png)
 
 <aside>
-💡
-
-**Objetivo:** analisar a **relação entre volume de vendas e margem bruta** para cada cliente/conta.
+💡 **Objective:** Analyze the **relationship between sales volume and gross margin** for each customer/account.
 
 </aside>
 
-O scatter plot revela padrões e concentrações, mostrando contas de alto valor e baixa margem, além de destacar oportunidades e riscos.
+The scatter plot reveals **patterns and clusters**, identifying **high-volume accounts with low margins**, and highlighting **opportunities and risks**.
 
 ---
 
-# Dashboard Interativo (Power BI)
+# Interactive Dashboard (Power BI)
 
 ![image.png](image%207.png)
 
@@ -237,35 +223,33 @@ O scatter plot revela padrões e concentrações, mostrando contas de alto valor
 
 ---
 
-# Conclusões
+# Conclusions
 
-O dashboard consolidou informações de vendas em um painel único, possibilitando acompanhar o acumulado do ano (YTD), comparar com o mesmo período anterior (PYTD) e avaliar margem bruta em diferentes níveis de análise. Isso permitiu identificar padrões importantes, como oscilações sazonais, variações de desempenho entre países e clientes de alto volume com margens reduzidas.
+The dashboard consolidated **sales information into a single panel**, enabling tracking of **YTD performance**, comparing with the **same previous period (PYTD)**, and assessing **gross margin at various levels of analysis**.  
+This allowed identifying **important patterns**, such as **seasonal fluctuations, performance variations across countries, and high-volume customers with reduced margins**.
 
 <aside>
-💡 Combinando diferentes tipos de visualização, o relatório oferece tanto uma leitura executiva imediata quanto a exploração detalhada dos dados, transformando métricas isoladas em uma visão clara e estratégica do negócio.
+💡 By combining different types of visualizations, the report provides both **immediate executive-level insights** and **detailed data exploration**, turning isolated metrics into a **clear, strategic business view**.
 
 </aside>
 
 ---
 
-Obrigado pela leitura!
+Thank you for reading!
 
-# Sobre o autor
+# About the Author
 
 ![123456789.png](123456789.png)
 
-**Lucas Correa**
+**Lucas Correa**  
+Data Storyteller | Dataviz | Data & BI Analyst  
 
-Data Storyteller | Dataviz | Analista de Dados & BI
+Curious by nature and passionate about turning data into visual stories.  
+Here you will find my data visualization projects, dashboards, and analyses.
 
-Curioso por natureza e apaixonado por transformar dados em histórias visuais. Neste espaço, você encontrará meus projetos de visualização de dados, dashboards e análises.
+Follow me on:
 
-Me acompanhe nas redes sociais:
-
-[https://www.linkedin.com/in/correa-lucas/](https://www.linkedin.com/in/correa-lucas/)
-
-[https://github.com/corlcs](https://github.com/corlcs)
-
-[https://medium.com/@corlcs](https://medium.com/@corlcs)
-
+[https://www.linkedin.com/in/correa-lucas/](https://www.linkedin.com/in/correa-lucas/)  
+[https://github.com/corlcs](https://github.com/corlcs)  
+[https://medium.com/@corlcs](https://medium.com/@corlcs)  
 [https://substack.com/@corlcs/posts](https://substack.com/@corlcs/posts)
