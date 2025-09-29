@@ -1,6 +1,6 @@
 # Performance Report – Sales and KPIs in the Gardening Market
 
-![Plant Company Performance Report.png](resources/Plant_Company_Performance_Report.png)
+![Plant Company Performance Report.png](Plant_Company_Performance_Report.png)
 
 # Context
 
@@ -93,7 +93,7 @@ RETURN
 Dim_Date[Date] <= lastsalesdatePY
 ```
 
-![image.png](image.png)
+![image.png](resources/image.png)
 
 ### Comparative Measures (YTD and PYTD)
 
@@ -122,13 +122,13 @@ CALCULATE(
 )
 ```
 
-![image.png](image%201.png)
+![image.png](resources/image%201.png)
 
 I developed **auxiliary tables** with essential values for filters, ensuring cleaner and more intuitive slicers and demonstrating **best practices in Power BI modeling**.
 
-![image.png](image%202.png)
+![image.png](resources/image%202.png)
 
-![image.png](image%203.png)
+![image.png](resources/image%203.png)
 
 ---
 
@@ -136,7 +136,7 @@ I developed **auxiliary tables** with essential values for filters, ensuring cle
 
 After modeling, I created a **Power BI dashboard** focused on **executive clarity and intuitive navigation**.
 
-![image.png](image%204.png)
+![image.png](resources/image%204.png)
 
 ---
 
@@ -144,7 +144,7 @@ After modeling, I created a **Power BI dashboard** focused on **executive clarit
 
 > (YTD, YTD vs PYTD Variation, PYTD, and GP%)
 
-![image.png](image%205.png)
+![image.png](resources/image%205.png)
 
 <aside>
 💡 **Objective:** Display the key KPIs – year-to-date performance (YTD), comparison with the previous year (PYTD), variation, and gross margin (GP%).
@@ -159,7 +159,7 @@ Helps users gain a **clear and quick overview** of the general situation before 
 
 > (Bottom 10 YTD vs PYTD by Country)
 
-![image.png](f0209e0b-c1ef-4e60-8e98-b088ecbfbc76.png)
+![image.png](resources/f0209e0b-c1ef-4e60-8e98-b088ecbfbc76.png)
 
 <aside>
 💡 **Objective:** Highlight the **countries with the worst relative performance** compared to the previous year.
@@ -174,7 +174,7 @@ The treemap is useful to show **hierarchy and negative magnitude in a compact sp
 
 > (YTD vs PYTD by Month)
 
-![image.png](78fd473e-96b1-4bfb-8bfb-906fe62b4bab.png)
+![image.png](resources/78fd473e-96b1-4bfb-8bfb-906fe62b4bab.png)
 
 <aside>
 💡 **Objective:** Show **how each month contributed** to the increase or decrease in the YTD compared to the PYTD.
@@ -189,7 +189,7 @@ The waterfall chart is ideal to visualize **increments and reductions over time*
 
 > (YTD Value by Month + Line for PYTD Value)
 
-![image.png](d4e6db45-70b2-4c09-ba88-ff938994cc27.png)
+![image.png](resources/d4e6db45-70b2-4c09-ba88-ff938994cc27.png)
 
 <aside>
 💡 **Objective:** Compare the **cumulative monthly volume** with the previous year’s performance.
@@ -204,7 +204,7 @@ The columns visualize the **YTD by month**, while the line adds a **historical r
 
 > (YTD Value vs GP% by Account)
 
-![image.png](image%206.png)
+![image.png](resources/image%206.png)
 
 <aside>
 💡 **Objective:** Analyze the **relationship between sales volume and gross margin** for each customer/account.
@@ -217,9 +217,9 @@ The scatter plot reveals **patterns and clusters**, identifying **high-volume ac
 
 # Interactive Dashboard (Power BI)
 
-![image.png](image%207.png)
+![image.png](resources/image%207.png)
 
-[PlantCo_Dashboard.pbix](PlantCo_Dashboard.pbix)
+[PlantCo_Dashboard.pbix](resources/PlantCo_Dashboard.pbix)
 
 ---
 
@@ -239,7 +239,7 @@ Thank you for reading!
 
 # About the Author
 
-![123456789.png](123456789.png)
+![123456789.png](resources/123456789.png)
 
 **Lucas Correa**  
 Data Storyteller | Dataviz | Data & BI Analyst  
@@ -249,7 +249,5 @@ Here you will find my data visualization projects, dashboards, and analyses.
 
 Follow me on:
 
-[https://www.linkedin.com/in/correa-lucas/](https://www.linkedin.com/in/correa-lucas/)  
-[https://github.com/corlcs](https://github.com/corlcs)  
-[https://medium.com/@corlcs](https://medium.com/@corlcs)  
+[https://www.linkedin.com/in/correa-lucas/](https://www.linkedin.com/in/correa-lucas/)   
 [https://substack.com/@corlcs/posts](https://substack.com/@corlcs/posts)
