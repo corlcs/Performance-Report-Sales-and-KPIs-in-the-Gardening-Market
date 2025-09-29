@@ -239,8 +239,6 @@ Thank you for reading!
 
 # About the Author
 
-![123456789.png](resources/123456789.png)
-
 **Lucas Correa**  
 Data Storyteller | Dataviz | Data & BI Analyst  
 
